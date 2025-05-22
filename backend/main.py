@@ -107,41 +107,51 @@ async def get_courses():
 
 # AI-powered course generation and storage
 @app.post("/courses/ai")
-async def generate_course_ai(payload: dict):
+async def generate_course_ai(payload: AICourseRequest):
     if not OPENROUTER_API_KEY:
         raise HTTPException(status_code=500, detail="OpenRouter API key not configured")
-    title = payload.get("title")
-    category = payload.get("category")
-    allowed = ["informatique", "gestion", "prepa", "english"]
-    if category not in allowed:
-        raise HTTPException(status_code=400, detail="Category must be one of: " + ",".join(allowed))
-    if not title:
-        raise HTTPException(status_code=400, detail="Title is required")
+
     async with httpx.AsyncClient() as client:
-        response = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json"
-            },
-            json={
-                "model": "google/gemini-2.0-flash-exp:free",
-                "messages": [{
-                    "role": "user",
-                    "content": (
-                        f"Generate a detailed course description and outline for a {category} course titled '{title}', and return ONLY a JSON object with fields: description (string), video_url (YouTube embed URL), and category ('{category}')."
-                    )
-                }]
-            }
-        )
-        response.raise_for_status()
-        data = response.json()
-        generated = data.get("choices", [])[0].get("message", {}).get("content", "")
-    course_doc = {"name": title, "description": generated, "category": category, "ai_generated": True}
+        try:
+            response = await client.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": "google/gemini-2.0-flash-exp:free",
+                    "messages": [{
+                        "role": "user",
+                        "content": (
+                            f"Generate a detailed course description and outline for a {payload.category} course titled '{payload.title}', "
+                            f"and return ONLY a JSON object with fields: description (string), video_url (YouTube embed URL), and category ('{payload.category}')."
+                        )
+                    }]
+                }
+            )
+            response.raise_for_status()
+            data = response.json()
+        except httpx.HTTPError as e:
+            raise HTTPException(status_code=502, detail=f"OpenRouter API error: {str(e)}")
+
+    content = data.get("choices", [])[0].get("message", {}).get("content", "")
+    if not content:
+        raise HTTPException(status_code=500, detail="Invalid response from AI service")
+
+    # Optional: You could parse the JSON if it's a stringified JSON content
+    course_doc = {
+        "name": payload.title,
+        "description": content,
+        "category": payload.category,
+        "ai_generated": True
+    }
+
+    # Save to MongoDB
     result = await courses_collection.insert_one(course_doc)
     course_doc["_id"] = str(result.inserted_id)
-    return course_doc
 
+    return course_doc
 
 # Endpoint to fetch all AI-generated courses
 @app.get("/courses/ai", response_model=List[CourseSchema])
