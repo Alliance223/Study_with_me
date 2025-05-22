@@ -161,8 +161,10 @@ Once the backend is running, you can access the automatic API documentation at:
 
 ## Contributors
 
-- [Your Name](https://github.com/maizaaymen)
-
+- [Maiza Aymen](https://github.com/maizaaymen)
+- [bayrem]
+- [Noureddine]
+- [mohamed hassouna]
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
