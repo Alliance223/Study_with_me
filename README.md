@@ -151,6 +151,70 @@ Once the backend is running, you can access the automatic API documentation at:
 ### Quiz System
 ![alt text](screenshots/image-11.png)
 
+## Project Management & Development Workflow
+
+### 📋 Jira Integration
+Our development process is fully integrated with Jira for efficient project management and task tracking. We follow agile methodologies to ensure continuous delivery and quality.
+
+#### Sprint Planning & Backlog Management
+![alt text](screenshots/image-10.png)
+*Jira board showing our sprint planning process, user stories, and backlog prioritization for the NovaUni platform development.*
+
+#### Task Tracking & Progress Monitoring
+![alt text](screenshots/image.png)
+*Detailed view of Jira tickets showing task assignments, progress tracking, and sprint velocity metrics used to monitor development progress.*
+
+#### Project Timeline & Roadmap
+![alt text](screenshots/image-1.png)
+*Strategic project roadmap in Jira showing major milestones, feature releases, and long-term planning for the NovaUni educational platform.*
+
+#### Team Collaboration & Workflow
+![alt text](screenshots/image-2.png)
+*Team workflow visualization showing how different team members collaborate on tasks, code reviews, and feature development through Jira integration.*
+
+#### Bug Tracking & Resolution
+![alt text](screenshots/image-3.png)
+*Bug tracking dashboard showing issue identification, priority assignment, and resolution timeline for maintaining platform quality.*
+
+#### Agile Board & Sprint Management
+![alt text](screenshots/image-4.png)
+*Agile board interface displaying current sprint status, story points, and task progression with real-time updates.*
+
+#### Detailed Issue Management
+![alt text](screenshots/image-5.png)
+*Individual issue tracking showing detailed task descriptions, acceptance criteria, comments, and time logging for accurate project estimation.*
+
+#### Team Performance Analytics
+![alt text](screenshots/image-6.png)
+*Jira analytics dashboard providing insights into team velocity, burndown charts, and sprint completion rates for continuous improvement.*
+
+### Development Process
+- **Sprint Duration**: 2-week sprints for rapid iteration
+- **Task Categories**:
+  - 🐛 Bug fixes and issue resolution
+  - ✨ New feature development
+  - 🔧 Technical improvements and refactoring
+  - 📚 Documentation updates
+  - 🧪 Testing and quality assurance
+- **Workflow Stages**:
+  - To Do → In Progress → Code Review → Testing → Done
+- **Definition of Done**: All tasks must pass code review, testing, and meet acceptance criteria
+- **Daily Standups**: Regular team sync-ups tracked through Jira comments
+
+### Project Management Features
+- **Epic Management**: Large features broken down into manageable stories
+- **Story Points**: Estimation using Fibonacci sequence for accurate planning
+- **Burndown Charts**: Real-time sprint progress tracking
+- **Velocity Tracking**: Historical data for improved sprint planning
+- **Component Tracking**: Frontend, Backend, Database, and DevOps segregation
+
+### Quality Assurance
+- Integration with GitHub for seamless version control
+- Automated CI/CD pipeline triggered by Jira ticket transitions
+- Regular sprint retrospectives for continuous improvement
+- User story validation and acceptance criteria verification
+- Automated testing integrated with Jira test management
+
 ## Future Enhancements
 
 - Mobile application
