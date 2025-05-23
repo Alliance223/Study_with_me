@@ -229,7 +229,7 @@ Our development process is fully integrated with Jira for efficient project mana
 - [bayrem](https://github.com/Bayrem12)
 - [Noureddine](https://github.com/General-Sandwalker)
 - [mohamed hassouna](https://github.com/hassounamohamed)
-- [alaadidene](https://github.com/alaadidene)
+- [alaa didene](https://github.com/alaadidene)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
