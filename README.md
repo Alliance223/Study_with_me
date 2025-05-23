@@ -1,4 +1,4 @@
-# NovaUni - Modern Educational Platform
+# Study with me - Modern Educational Platform
 ![alt text](screenshots/image-8.png)
 ![alt text](screenshots/image-7.png)
 
